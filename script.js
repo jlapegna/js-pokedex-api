@@ -18,7 +18,7 @@ const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
 
 
 
-  const api_url = 'https://pokeapi.co/api/v2/pokemon/275';
+  const api_url = 'https://pokeapi.co/api/v2/pokemon/332';
 
   async function getPokeAPI() {
     const response = await fetch(api_url);
@@ -26,7 +26,7 @@ const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
     console.log(data);
 
     pokeName.textContent = capitalize(data['name']);
-    pokeId.textContent = 'no.' + data['id'];
+    pokeId.textContent = 'no.' + data['id'].toString().padStart(3, '0');
     pokeWeight.textContent = data['weight'];
     pokeHeight.textContent = data['height'];
     pokeFrontImage.src = data['sprites']['front_default'] || '';
@@ -158,71 +158,34 @@ const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
         pokeTypeTwo.classList.add('hide');
         pokeTypeTwo.textContent = '';
       }
-
-
-
-
-
-
-    if (dataSecondType) {
-      pokeTypeTwo.classList.remove('hide');
-      pokeTypeTwo.textContent = capitalize(dataSecondType['type']['name']);
-
-      switch(dataSecondType['type']['name']) {
-        case "grass":
-          pokeTypeTwo.classList.add('grass');
-          break;
-        case "fighting":
-          pokeTypeTwo.classList.add('fighting');
-          break;
-        case "flying":
-          pokeTypeTwo.classList.add('flying');
-          break;
-        case "ground":
-          pokeTypeTwo.classList.add('ground');
-          break;
-        case "rock":
-          pokeTypeTwo.classList.add('rock');
-          break;
-        case "bug":
-          pokeTypeTwo.classList.add('bug');
-          break;
-        case "ghost":
-          pokeTypeTwo.classList.add('ghost');
-          break;
-        case "steel":
-          pokeTypeTwo.classList.add('steel');
-          break;
-        case "fire":
-          pokeTypeTwo.classList.add('fire');
-          break;
-        case "water":
-          pokeTypeTwo.classList.add('water');
-          break;
-        case "electric":
-          pokeTypeTwo.classList.add('electric');
-          break;
-        case "psychic":
-          pokeTypeTwo.classList.add('psychic');
-          break;
-        case "ice":
-          pokeTypeTwo.classList.add('ice');
-          break;
-        case "dragon":
-          pokeTypeTwo.classList.add('dragon');
-          break;
-        case "dark":
-          pokeTypeTwo.classList.add('dark');
-          break;
-        case "fairy":
-          pokeTypeTwo.classList.add('fairy');
-          break;
-        }
-      } else {
-        pokeTypeTwo.classList.add('hide');
-        pokeTypeTwo.textContent = '';
-      }
   }
+
+
+  const fetchPokeList = url => {
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const { results, previous, next } = data;
+      prevUrl = previous;
+      nextUrl = next;
+
+      for (let i = 0; i < pokeListItems.length ; i++) {
+        const pokeListItem = pokeListItems[i];
+        const resultData = results[i];
+
+        if (resultData) {
+          const { name, url } = resultData;
+          const urlArray = url.split('/');
+          const id = urlArray[urlArray.length - 2];
+          pokeListItem.textContent = id + '. ' + capitalize(name);
+        } else {
+          pokeListItem.textContent = '';
+        }
+      }
+    });
+};
+
+    fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
 
     getPokeAPI();
 

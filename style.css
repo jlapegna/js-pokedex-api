@@ -267,16 +267,17 @@
 }
 
 .right-screen {
+  display: flex;
+  flex-wrap: wrap;
   background: white;
+  padding: 5px;
   border: 2px solid black;
   height: 300px;
   width: 100%;
 }
 
 .list-item {
-  display: flex;
-  float: right;
-  color: white;
+  color: black;
   cursor: pointer;
   font-size: 12px;
   height: 25px;
@@ -288,6 +289,11 @@
 .list-item:hover {
   background: #85cbf2;
   color: black;
+}
+
+.list-item:active {
+  background: #1280f2;
+  color: white;
 }
 
 .list-item:active {
