@@ -22,9 +22,9 @@
   border: 2px solid black;
   box-shadow: 0 0 2px 2px rgba(0,0,0,.5);
   padding: 10px;
-  height: 650px;
+  height: 580px;
   margin: 50px;
-  width: 950px;
+  width: 880px;
 }
 
 .container-border {
@@ -64,7 +64,7 @@
   background: #E71D23;
   border: 2px solid black;
   border-radius: 5px;
-  padding: 0 25px 0 25px;
+  padding: 10px 25px 10px 25px;
   height: 100%;
   width: 100%;
 }
@@ -121,6 +121,7 @@
 .pokemon-name,
 .pokemon-number {
   background: #ace600;
+  font-weight: bold;
 }
 
 .left-screen-wrapper {
@@ -129,7 +130,7 @@
   border: 2px solid black;
   box-shadow: 0 0 2px 2px rgba(0,0,0,.4);
   padding: 20px;
-  height: 350px;
+  height: 300px;
   width: 100%;
 }
 
@@ -144,8 +145,17 @@
 
 .left-screen-small {
   background: white;
+  display: flex;
+  flex-direction: row;
   width: 100%;
   height: 100%;
+}
+
+.poke-image,
+.poke-image-back {
+  height: 96px;
+  width: 96px;
+  background: white;
 }
 
 .left-game-buttons {
@@ -209,28 +219,64 @@
 /* RIGHT CSS */
 
 .right-navbar {
+  background: #E71D23;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  width: 100%;
+}
+
+.poke-types {
+  background: #DEDEDE;
+  border: 1px solid black;
+  height: 100%;
+  width: 50%;
+}
+
+.poke-stats {
+  background: #E71D23;
+  border: 1px solid black;
+  height: 100%;
+  width: 50%;
+  padding: 10px;
+  box-shadow: inset 0 0 3px 3px rgba(0,0,0,.3);
+}
+
+.stat-type {
+  background: #7F100F;
+  color: white;
+  text-shadow: 1px 1px 1px #CCCCCC;
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  box-shadow: inset 0 0 3px 3px rgba(0,0,0,.3);
+}
+
+.stat-title {
   background: #E71D23;
 }
 
-.right-stats {
-  border: 2px solid black;
-  height: 100%;
+.weight-stat,
+.height-stat {
   background: #E71D23;
 }
 
-.right-type-stats {
-  border: 2px solid black;
-  height: 100%;
-  background: #E71D23;
+.first-type,
+.second-type {
+  background: yellow;
+  border-radius: 25px;
+  display: block;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: center;
 }
 
 .right-screen {
   background: white;
   border: 2px solid black;
-  height: 320px;
+  height: 300px;
   width: 100%;
 }
 
@@ -262,6 +308,7 @@
   align-items: center;
   justify-content: space-evenly;
   background: #E71D23;
+  min-height: 100px;
 }
 
 .prev-button {
@@ -292,6 +339,11 @@
   justify-content: center;
   text-transform: uppercase;
   width: 100px;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background: white;
 }
 
 /* POKEMON COLORS */
