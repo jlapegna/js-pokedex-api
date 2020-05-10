@@ -135,26 +135,20 @@
 }
 
 .left-screen {
-  background: black;
-  border: 2px solid black;
-  box-shadow: 0 0 2px 2px rgba(0,0,0,.4);
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-}
-
-.left-screen-small {
-  background: white;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border: 12px solid black;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,.4);
   width: 100%;
   height: 100%;
 }
 
 .poke-image,
 .poke-image-back {
-  height: 96px;
-  width: 96px;
+  height: 126px;
+  width: 126px;
   background: white;
 }
 
@@ -265,7 +259,6 @@
 
 .first-type,
 .second-type {
-  background: yellow;
   border-radius: 25px;
   display: block;
   margin-bottom: 10px;
