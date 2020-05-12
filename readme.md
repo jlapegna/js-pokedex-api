@@ -1,19 +1,21 @@
 ![alt text](https://github.com/jlapegna/js-pokedex-api/blob/master/img/pokedexpreview.png?raw=true)
 
-<h1>Pokedex App</h1>
-<hr>
+#Pokedex App
 
-This app replicates a "Pokedex" and uses the Pokedex API available <a href="https://pokeapi.co/">here</a>.
+This app replicates a "Pokedex" and uses the Pokedex API available here (https://pokeapi.co/).
 
-The layout was created using only HTML, CSS and Flexbox. Clicking a name in the list brings up the selected pokemon, it's stats and the "Type" catagory changes color according to the type selected.
-<hr>
+The layout was created using only HTML, CSS and Flexbox. The app's functionality uses only vanilla javascript. Clicking a name in the list brings up the selected pokemon, it's stats and the "Type" catagory changes color according to the type selected.
 
-<h3>Key Concepts</h3>
-<ul>
-  <li>DOM Manipulation</li>
-  <li>fetch() function</li>
-  <li>asynchronous JavaScript</li>
-  <li>API</li>
-  <li>Event Handlers</li>
-</ul>
-<hr>
+
+## Key Concepts
+
+* Layout design with Flexbox
+* DOM Manipulation
+* asynchronous JavaScript
+* fetch() function
+* API
+* Event Handlers
+
+
+## Sources
+This app is inspired by this app tutorial (https://www.youtube.com/watch?v=wXjSaZb67n8)
