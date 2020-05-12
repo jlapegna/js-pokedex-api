@@ -1,46 +1,46 @@
 window.onload = function() {
 
-const pokeName = document.querySelector('.pokemon-name');
-const pokeId = document.querySelector('.pokemon-number');
-const pokeFrontImage = document.querySelector('.poke-image');
-const pokeBackImage = document.querySelector('.poke-image-back');
-const pokeWeight = document.querySelector('.weight-stat');
-const pokeHeight = document.querySelector('.height-stat');
-const pokeSpeed = document.querySelector('.speed-stat');
-const pokeDefense = document.querySelector('.defense-stat');
-const pokeForm = document.querySelector('.form-stat');
-const pokeTypeOne = document.querySelector('.first-type');
-const pokeTypeTwo = document.querySelector('.second-type');
-const pokeListItems = document.querySelectorAll('.list-item');
-const pokeMoveList = document.querySelector('.move-list');
-const leftButton = document.querySelector('.prev-button');
-const rightButton = document.querySelector('.next-button');
+  const pokeName = document.querySelector('.pokemon-name');
+  const pokeId = document.querySelector('.pokemon-number');
+  const pokeFrontImage = document.querySelector('.poke-image');
+  const pokeBackImage = document.querySelector('.poke-image-back');
+  const pokeWeight = document.querySelector('.weight-stat');
+  const pokeHeight = document.querySelector('.height-stat');
+  const pokeSpeed = document.querySelector('.speed-stat');
+  const pokeDefense = document.querySelector('.defense-stat');
+  const pokeForm = document.querySelector('.form-stat');
+  const pokeTypeOne = document.querySelector('.first-type');
+  const pokeTypeTwo = document.querySelector('.second-type');
+  const pokeListItems = document.querySelectorAll('.list-item');
+  const pokeMoveList = document.querySelector('.move-list');
+  const leftButton = document.querySelector('.prev-button');
+  const rightButton = document.querySelector('.next-button');
 
-nextURL = null;
-prevURL = null;
+  nextURL = null;
+  prevURL = null;
 
-// Functions
+  // Functions
 
-const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
+  const capitalize = (str) => str[0].toUpperCase() + str.substr(1);
 
-const TYPES = [
-  'normal', 'fighting', 'flying',
-  'poison', 'ground', 'rock',
-  'bug', 'ghost', 'steel',
-  'fire', 'water', 'grass',
-  'electric', 'psychic', 'ice',
-  'dragon', 'dark', 'fairy'
-];
+  const TYPES = [
+    'normal', 'fighting', 'flying',
+    'poison', 'ground', 'rock',
+    'bug', 'ghost', 'steel',
+    'fire', 'water', 'grass',
+    'electric', 'psychic', 'ice',
+    'dragon', 'dark', 'fairy'
+  ];
 
-const resetClasses = () => {
-  for (const type of TYPES) {
-    pokeTypeOne.classList.remove(type);
-    pokeTypeTwo.classList.remove(type);
-  }
-};
+  const resetClasses = () => {
+    for (const type of TYPES) {
+      pokeTypeOne.classList.remove(type);
+      pokeTypeTwo.classList.remove(type);
+    }
+  };
 
 
-// Left Screen
+  // Left Screen
 
   const fetchPokeData = id => {
 
@@ -60,7 +60,7 @@ const resetClasses = () => {
       pokeWeight.textContent = 'Weight:  ' + data['weight'];
       pokeHeight.textContent = 'Height:  ' + data['height'];
       pokeFrontImage.src = data['sprites']['front_default'] || '';
-      pokeBackImage.src = data['sprites']['back_default']|| '';
+      pokeBackImage.src = data['sprites']['back_default'] || '';
 
       var pokeStats = data['stats'];
       var speedStat = pokeStats[0]['base_stat'];
@@ -68,16 +68,6 @@ const resetClasses = () => {
 
       var defenseStat = pokeStats[3]['base_stat'];
       pokeDefense.textContent = 'Defense:  ' + defenseStat;
-
-
-      // for (var i = 0; i < pokeStats.length; i++) {
-      //   var speedStat = pokeStats[0];
-      //   console.log('stats', speedStat);
-      // }
-
-
-
-
 
       const dataTypes = data['types'];
       const dataFirstType = dataTypes[0];
@@ -87,7 +77,7 @@ const resetClasses = () => {
 
         pokeTypeOne.textContent = capitalize(dataFirstType['type']['name']);
 
-        switch(dataFirstType['type']['name']) {
+        switch (dataFirstType['type']['name']) {
           case "poison":
             pokeTypeOne.classList.add('poison');
             break;
@@ -142,14 +132,14 @@ const resetClasses = () => {
           case "normal":
             pokeTypeOne.classList.add('normal');
             break;
-          }
         }
+      }
 
       if (dataSecondType) {
         pokeTypeTwo.classList.remove('hide');
         pokeTypeTwo.textContent = capitalize(dataSecondType['type']['name']);
 
-        switch(dataSecondType['type']['name']) {
+        switch (dataSecondType['type']['name']) {
           case "poison":
             pokeTypeTwo.classList.add('poison');
             break;
@@ -204,77 +194,81 @@ const resetClasses = () => {
           case "normal":
             pokeTypeTwo.classList.add('normal');
             break;
-          }
-        } else {
-          pokeTypeTwo.classList.add('hide');
-          pokeTypeTwo.textContent = '';
         }
+      } else {
+        pokeTypeTwo.classList.add('hide');
+        pokeTypeTwo.textContent = '';
+      }
     }
 
   };
-// Right Screen
+
+  // Right Screen
 
   const fetchPokeList = url => {
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      const { results, previous, next } = data;
-      console.log(data);
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const {
+          results,
+          previous,
+          next
+        } = data;
+        console.log(data);
 
-      prevURL = previous;
-      nextURL = next;
+        prevURL = previous;
+        nextURL = next;
 
-      for (let i = 0; i < pokeListItems.length ; i++) {
-        const pokeListItem = pokeListItems[i];
-        const resultData = results[i];
+        for (let i = 0; i < pokeListItems.length; i++) {
+          const pokeListItem = pokeListItems[i];
+          const resultData = results[i];
 
-        if (resultData) {
-          const { name, url } = resultData;
-          const urlArray = url.split('/');
-          const id = urlArray[urlArray.length - 2];
-          pokeListItem.textContent = id + '. ' + capitalize(name);
-        } else {
-          pokeListItem.textContent = '';
+          if (resultData) {
+            const {
+              name,
+              url
+            } = resultData;
+            const urlArray = url.split('/');
+            const id = urlArray[urlArray.length - 2];
+            pokeListItem.textContent = id + '. ' + capitalize(name);
+          } else {
+            pokeListItem.textContent = '';
+          }
         }
-      }
-    });
-};
+      });
+  };
 
-// Event Listeners
+  // Event Listeners
 
-const handleRightButton = () => {
-  if (nextURL) {
-    fetchPokeList(nextURL);
-  }
-};
+  const handleRightButton = () => {
+    if (nextURL) {
+      fetchPokeList(nextURL);
+    }
+  };
 
-const handleLeftButton = () => {
-  if (prevURL) {
-    fetchPokeList(prevURL);
-  }
-};
+  const handleLeftButton = () => {
+    if (prevURL) {
+      fetchPokeList(prevURL);
+    }
+  };
 
-const handleListItem = (e) => {
-  const listItem = e.target.textContent;
-  const pokemonID = listItem.split('.')[0];
-  fetchPokeData(pokemonID);
-};
+  const handleListItem = (e) => {
+    const listItem = e.target.textContent;
+    const pokemonID = listItem.split('.')[0];
+    fetchPokeData(pokemonID);
+  };
 
-// Event Listeners
+  // Event Listeners
 
-leftButton.addEventListener('click', handleLeftButton);
-rightButton.addEventListener('click', handleRightButton);
+  leftButton.addEventListener('click', handleLeftButton);
+  rightButton.addEventListener('click', handleRightButton);
 
-for (const pokeListItem of pokeListItems){
-  pokeListItem.addEventListener('click', handleListItem);
-};
+  for (const pokeListItem of pokeListItems) {
+    pokeListItem.addEventListener('click', handleListItem);
+  };
 
-
-
-
-// Initalize the APP
+  // Initalize the APP
 
   fetchPokeList('https://pokeapi.co/api/v2/pokemon?offset=0&limit=20');
-
 
 };

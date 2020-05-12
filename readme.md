@@ -1,6 +1,6 @@
 ![alt text](https://github.com/jlapegna/js-pokedex-api/blob/master/img/pokedexpreview.png?raw=true)
 
-#Pokedex App
+# Pokedex App
 
 This app replicates a "Pokedex" and uses the Pokedex API available here (https://pokeapi.co/).
 
