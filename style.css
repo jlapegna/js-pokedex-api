@@ -2,12 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: rgb(0,25,36);
-  background: linear-gradient(90deg, rgba(0,25,36,1) 0%, rgba(9,119,121,1) 0%, rgba(0,212,255,1) 100%);
   font-family: sans-serif;
 }
 
 /* BODY CSS */
+
+.body {
+  background: linear-gradient(90deg, rgba(0,25,36,1) 0%, rgba(9,119,121,1) 0%, rgba(0,212,255,1) 100%);
+}
 
 .wrapper {
   display: flex;
@@ -229,6 +231,9 @@
 
 .poke-stats {
   background: #E71D23;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border: 1px solid black;
   height: 100%;
   width: 50%;
@@ -253,7 +258,8 @@
 }
 
 .weight-stat,
-.height-stat {
+.height-stat,
+.poke-form {
   background: #E71D23;
 }
 
@@ -307,7 +313,7 @@
   align-items: center;
   justify-content: space-evenly;
   background: #E71D23;
-  min-height: 100px;
+  min-height: 90px;
 }
 
 .prev-button {
@@ -352,7 +358,7 @@
 }
 
 .normal {
-  background: #BABAAE;
+  background: #808080;
 }
 
 .fighting {
