@@ -1,1 +1,1 @@
-![alt text](https://github.com/jlapegna/js-pokedex-api/tree/master/img/pokedexpreview.png)
+![alt text](https://github.com/[jlapegna]/[js-pokedex-api]/blob/[img]/pokedexpreview.png?raw=true)
